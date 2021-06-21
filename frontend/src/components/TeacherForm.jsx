@@ -5,7 +5,7 @@ import { required } from '../utils/validators'
 import Input from './common/Input'
 import MultiSelect from './common/MultiSelect'
 
-export default function TeacherForm({ onSubmit, onCancel, group, initialValues = {} }) {
+export default function TeacherForm({ showUpdate, onSubmit, onCancel, group, initialValues = {} }) {
     const groups = Object.entries(group.response).map(([, { id, name }]) => ({ value: id, label: name }))
 
     return (
@@ -15,7 +15,9 @@ export default function TeacherForm({ onSubmit, onCancel, group, initialValues =
                 initialValues.group.map((item) => ({ value: item.id, label: item.name }))
             ) : [] }}>
             <Form>
-                <h1 className="title has-text-centered"><b>Add Teacher</b></h1>
+                {showUpdate
+                    ? <h1 className="title has-text-centered"><b>Edit Teacher</b></h1>
+                    : <h1 className="title has-text-centered"><b>Add Teacher</b></h1>}
                 <Input name="name" label="Name" validate={required} />
                 <MultiSelect
                     name="group"

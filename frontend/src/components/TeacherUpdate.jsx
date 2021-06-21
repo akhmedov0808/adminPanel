@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import map from 'lodash/map'
 import { usePutRequest } from '../hooks/request'
 import { TEACHER_DETAIL } from '../urls'
@@ -6,6 +6,7 @@ import TeacherForm from './TeacherForm'
 
 export default function TeacherUpdate({ hideModal, item, reload, group }) {
     const teacherUpdate = usePutRequest({ url: TEACHER_DETAIL.replace('{id}', item.id) })
+    const [showUpdate] = useState(true)
 
     async function onSubmit(data) {
         const { success } = await teacherUpdate.request({ data: {
@@ -23,6 +24,8 @@ export default function TeacherUpdate({ hideModal, item, reload, group }) {
             onCancel={hideModal}
             initialValues={item}
             group={group}
-            onSubmit={onSubmit} />
+            onSubmit={onSubmit}
+            showUpdate={showUpdate}
+        />
     )
 }
