@@ -36,7 +36,7 @@ export default function Department() {
             </div>
             <hr />
             <div>
-                {departmentList.response && (departmentList.response.length > 0) ? (
+                {departmentList.response ? (
                     <b className="is-size-5 ml-4">
                         Departments :  {departmentList.response.length}
                     </b>

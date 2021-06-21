@@ -4,7 +4,6 @@ import BaseContextWrapper from './components/common/BaseContext'
 
 
 import Teacher from './pages/Teachers'
-import Navbar from './pages/Navbar'
 import Student from './pages/Student'
 import Faculty from './pages/Faculty'
 import Department from './pages/Department'
@@ -25,7 +24,6 @@ export default function App() {
     return (
         <BrowserRouter>
             <BaseContextWrapper>
-                <Navbar />
                 <Switch>
                     <Route path="/" name="auth" component={Login} exact />
                     <Route path="/sign-up" name="auth" component={SignUp} exact />

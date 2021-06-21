@@ -12,3 +12,4 @@ class DepartmentSerializers(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = ('id', 'name', 'faculty')
+

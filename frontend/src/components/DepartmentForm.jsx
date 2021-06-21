@@ -7,7 +7,7 @@ import Select from './common/Select'
 
 export default function DepartmentForm({ onSubmit, onCancel, faculty, initialValues = {} }) {
     return (
-        <Formik onSubmit={onSubmit} initialValues={{ name: '', ...initialValues }}>
+        <Formik onSubmit={onSubmit} initialValues={{ ...initialValues }}>
             <Form>
                 <h1 className="title has-text-centered"><b>Add Department</b></h1>
                 <Input name="name" label="Name" validate={required} />
@@ -22,7 +22,7 @@ export default function DepartmentForm({ onSubmit, onCancel, faculty, initialVal
                         onClick={onCancel}
                         icon="close-outline"
                         text="Cancel"
-                        className="is-danger" />&nbsp;&nbsp;
+                        className="is-danger" />&nbsp;
 
                     <Button
                         text="Save"
