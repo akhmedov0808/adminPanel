@@ -4,10 +4,10 @@ import { FACULTY_DETAIL } from '../urls'
 import FacultyForm from './FacultyForm'
 
 export default function FacultyUpdate({ hideModal, item, reload }) {
-    const districtUpdate = usePutRequest({ url: FACULTY_DETAIL.replace('{id}', item.id) })
+    const facultyUpdate = usePutRequest({ url: FACULTY_DETAIL.replace('{id}', item.id) })
 
     async function onSubmit(data) {
-        const { success } = await districtUpdate.request({ data: { ...data } })
+        const { success } = await facultyUpdate.request({ data: { ...data } })
         if (success) {
             reload.request()
             hideModal()

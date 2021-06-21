@@ -8,12 +8,6 @@ export default function GroupModal({ item }) {
             <br />
             <b className="is-size-5 has-text-info">Department:</b>
             <span className="is-size-5"> {item.department.name}</span>
-            <br />
-            <b className="is-size-5 has-text-info">Student:</b>
-            <span className="is-size-5">Students</span>
-            <br />
-            <b className="is-size-5 has-text-info">Teacher:</b>
-            <span className="is-size-5"> Teachers</span>
         </div>
     )
 }

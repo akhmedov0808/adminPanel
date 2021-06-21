@@ -16,7 +16,7 @@ export default function Group() {
         <GroupCreate
             department={departmentList}
             onCancel={() => setShowUpdateModal()}
-            faculty={groupList.response ? groupList.response : []}
+            faculty={groupList.response || []}
             reload={groupList}
         />,
     )

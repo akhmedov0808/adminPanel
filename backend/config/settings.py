@@ -164,8 +164,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 15,
 }
 
-FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN', 'https://todo.com')
-BACKEND_DOMAIN = os.environ.get('BACKEND_DOMAIN', 'https://todo.com')
+FRONTEND_DOMAIN = os.environ.get('FRONTEND_DOMAIN', 'https://.com')
+BACKEND_DOMAIN = os.environ.get('BACKEND_DOMAIN', 'https://.com')
 COMPANY_NAME = 'Monday'
 
 try:

@@ -9,14 +9,14 @@ import TeacherCreate from '../components/TeacherCreate'
 import TeacherItem from '../components/TeacherItem'
 
 
-export default function Student() {
+export default function Teacher() {
     const teacherList = useLoad({ url: TEACHER_LIST })
     const groupList = useLoad({ url: GROUP_LIST })
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <TeacherCreate
             group={groupList}
             onCancel={() => setShowUpdateModal()}
-            faculty={teacherList.response ? teacherList.response : []}
+            faculty={teacherList.response || []}
             reload={teacherList}
         />,
     )

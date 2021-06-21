@@ -16,7 +16,7 @@ export default function Department() {
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <DepartmentCreate
             onCancel={() => setShowUpdateModal()}
-            faculty={facultyList.response ? facultyList.response : []}
+            faculty={facultyList.response || []}
             reload={departmentList}
         />,
     )

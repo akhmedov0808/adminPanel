@@ -3,7 +3,7 @@ import { usePostRequest } from '../hooks/request'
 import { DEPARTMENT_LIST } from '../urls'
 import DepartmentForm from './DepartmentForm'
 
-export default function DepartmentCreate({ onCancel, faculty, reload }) {
+export default function DepartmentCreate({ onCancel, reload, faculty }) {
     const department = usePostRequest({ url: DEPARTMENT_LIST })
 
     async function onSubmit(data) {

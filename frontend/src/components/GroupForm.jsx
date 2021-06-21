@@ -12,7 +12,7 @@ export default function GroupForm({ onSubmit, onCancel, department, initialValue
                 <h1 className="title has-text-centered"><b>Add Group</b></h1>
                 <Input name="name" label="Name" validate={required} />
                 <Select
-                    name="group"
+                    name="department"
                     label="Departments"
                     validate={required}
                     options={department.response}

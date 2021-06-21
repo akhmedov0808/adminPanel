@@ -7,7 +7,7 @@ export default function DepartmentModal({ item }) {
             <span className="is-size-5"> {item.name}</span>
             <br />
             <b className="is-size-5 has-text-info">Faculty:</b>
-            <span className="is-size-5"> Students</span>
+            <span className="is-size-5"> {item.faculty.name}</span>
         </div>
     )
 }

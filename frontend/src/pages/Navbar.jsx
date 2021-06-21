@@ -8,7 +8,7 @@ export default function Navbar() {
                 <NavLink className="navbar-item mr-5" to="/faculty">
                     <b>Faculties</b>
                 </NavLink>
-                <NavLink className="navbar-item mr-5" to="/">
+                <NavLink className="navbar-item mr-5" to="/department">
                     <b>Departments</b>
                 </NavLink>
                 <NavLink className="navbar-item mr-5" to="/group">

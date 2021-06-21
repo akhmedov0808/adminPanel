@@ -18,7 +18,7 @@ export default function Student() {
         <StudentCreate
             group={groupList}
             onCancel={() => setShowUpdateModal()}
-            faculty={studentList.response ? studentList.response : []}
+            faculty={studentList.response || []}
             reload={studentList}
         />,
     )
@@ -39,7 +39,7 @@ export default function Student() {
             </div>
             <hr />
             <div>
-                {studentList.response && (studentList.response.length > 0) ? (
+                {studentList.response ? (
                     <b className="is-size-5 ml-4">
                         Students :  {studentList.response.length}
                     </b>
@@ -47,7 +47,7 @@ export default function Student() {
             </div>
             <Table
                 loading={studentList.loading}
-                items={studentList.response ? studentList.response : []}
+                items={studentList.response || []}
                 columns={
                     { name: '', actions: '' }
                 }

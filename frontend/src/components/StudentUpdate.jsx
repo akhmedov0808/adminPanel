@@ -7,7 +7,8 @@ export default function StudentUpdate({ hideModal, item, reload, group }) {
     const studentUpdate = usePutRequest({ url: STUDENT_DETAIL.replace('{id}', item.id) })
 
     async function onSubmit(data) {
-        const { success } = await studentUpdate.request({ data })
+        const { success } = await studentUpdate.request({ data: { ...data, group: data.group.id } })
+
         if (success) {
             reload.request()
             hideModal()
@@ -17,7 +18,7 @@ export default function StudentUpdate({ hideModal, item, reload, group }) {
     return (
         <StudentForm
             onCancel={hideModal}
-            initialValues={item}
+            initialValues={{ ...item, group: item.group.id }}
             group={group}
             onSubmit={onSubmit} />
     )

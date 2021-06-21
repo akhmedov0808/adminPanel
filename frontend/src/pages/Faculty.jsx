@@ -14,7 +14,6 @@ export default function Faculty() {
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <FacultyCreate
             onCancel={() => setShowUpdateModal()}
-            faculty={facultyList.response ? facultyList.response : []}
             reload={facultyList}
         />,
     )
@@ -38,7 +37,7 @@ export default function Faculty() {
             <hr />
 
             <div>
-                {facultyList.response && (facultyList.response.length > 0) ? (
+                {facultyList.response ? (
                     <b className="is-size-5 ml-4">
                         Faculties :  {facultyList.response.length}
                     </b>
@@ -47,7 +46,7 @@ export default function Faculty() {
 
             <Table
                 loading={facultyList.loading}
-                items={facultyList.response ? facultyList.response : []}
+                items={facultyList.response || []}
                 columns={
                     { name: '', actions: '' }
                 }

@@ -1,3 +1,9 @@
+export const SIGNIN = '/users/sign-in'
+export const SIGNUP = '/users/sign-up'
+export const CONFIRM = '/users/confirm'
+export const RESET_PASSWORD = '/users/reset_password'
+export const RESET_LINK = '/users/reset_link'
+
 export const STUDENT_LIST = 'orm/student'
 export const STUDENT_DETAIL = 'orm/student/{id}'
 export const GROUP_LIST = 'orm/group'
