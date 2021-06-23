@@ -19,11 +19,12 @@ export default function FacultyCreate({ onCancel, reload }) {
 
     return (
         <div>
+            <h1 className="title has-text-centered"><b>Add Faculty</b></h1>
+
             <FacultyForm
                 onSubmit={onSubmit}
                 onCancel={onCancel}
-                faculty={faculty}
-            />
+                faculty={faculty} />
         </div>
     )
 }

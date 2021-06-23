@@ -12,6 +12,7 @@ import GroupItem from '../components/GroupItem'
 export default function Group() {
     const groupList = useLoad({ url: GROUP_LIST })
     const departmentList = useLoad({ url: DEPARTMENT_LIST })
+
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <GroupCreate
             department={departmentList}
@@ -36,7 +37,7 @@ export default function Group() {
             </div>
             <hr />
             <div>
-                {groupList.response && (groupList.response.length > 0) ? (
+                {groupList.response ? (
                     <b className="is-size-5 ml-4">
                         Groups :  {groupList.response.length}
                     </b>
@@ -52,8 +53,7 @@ export default function Group() {
                     <GroupItem key={item.id}
                         item={item}
                         department={departmentList}
-                        reload={groupList}
-                    />
+                        reload={groupList} />
                 )}
             />
 

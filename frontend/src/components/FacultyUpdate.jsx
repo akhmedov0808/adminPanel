@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { usePutRequest } from '../hooks/request'
 import { FACULTY_DETAIL } from '../urls'
 import FacultyForm from './FacultyForm'
 
 export default function FacultyUpdate({ hideModal, item, reload }) {
     const facultyUpdate = usePutRequest({ url: FACULTY_DETAIL.replace('{id}', item.id) })
-    const [showUpdate] = useState(true)
 
     async function onSubmit(data) {
         const { success } = await facultyUpdate.request({ data: { ...data } })
@@ -16,11 +15,13 @@ export default function FacultyUpdate({ hideModal, item, reload }) {
     }
 
     return (
-        <FacultyForm
-            onCancel={hideModal}
-            initialValues={item}
-            onSubmit={onSubmit}
-            showUpdate={showUpdate}
-        />
+        <div>
+            <h1 className="title has-text-centered"><b>Edit Faculty</b></h1>
+
+            <FacultyForm
+                onCancel={hideModal}
+                initialValues={item}
+                onSubmit={onSubmit} />
+        </div>
     )
 }

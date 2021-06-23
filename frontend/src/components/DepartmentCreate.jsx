@@ -7,9 +7,8 @@ export default function DepartmentCreate({ onCancel, reload, faculty }) {
     const department = usePostRequest({ url: DEPARTMENT_LIST })
 
     async function onSubmit(data) {
-        const { success } = await department.request({ data: {
-            ...data,
-        } })
+        const { success } = await department.request({ data })
+
         if (success) {
             reload.request()
             onCancel()
@@ -21,8 +20,7 @@ export default function DepartmentCreate({ onCancel, reload, faculty }) {
             <DepartmentForm
                 onSubmit={onSubmit}
                 onCancel={onCancel}
-                faculty={faculty}
-            />
+                faculty={faculty} />
         </div>
     )
 }
