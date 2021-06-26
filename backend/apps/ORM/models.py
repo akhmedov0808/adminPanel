@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models import CASCADE
 
+from ORM.querysets.teachers import TeacherQuerySet
+from ORM.querysets.student import StudentQuerySet
 from core.models import BaseModel
 
 
@@ -42,6 +44,7 @@ class Group(BaseModel):
 class Student(BaseModel):
     name = models.CharField(max_length=255)
     group = models.ForeignKey(Group, CASCADE, blank=True, null=True)
+    objects = StudentQuerySet.as_manager()
 
     def __str__(self):
         return self.name
@@ -54,6 +57,7 @@ class Student(BaseModel):
 class Teacher(BaseModel):
     group = models.ManyToManyField(Group, blank=True)
     name = models.CharField(max_length=255)
+    objects = TeacherQuerySet.as_manager()
 
     def __str__(self):
         return self.name

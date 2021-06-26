@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function StundentModal({ item }) {
+export default function StudentModal({ item }) {
     return (
-        <div>
-            <b className="is-size-5 has-text-info">Student:</b>
-            <span className="is-size-5"> {item.name}</span>
+        <div className="has-text-centered">
+            <b className="is-size-4 has-text-info">Student:</b>
+            <span className="is-size-4"> {item.name}</span>
             <br />
-            <b className="is-size-5 has-text-info">Group:</b>
-            <span className="is-size-5"> {item.group.name}</span>
+            <b className="is-size-4 has-text-info">Group:</b>
+            <span className="is-size-4"> {item.group.name}</span>
         </div>
     )
 }

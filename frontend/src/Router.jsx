@@ -26,6 +26,7 @@ export default function App() {
             <BaseContextWrapper>
                 <Switch>
                     <Route path="/" name="auth" component={Login} exact />
+                    <Route path="/" name="auth" component={Login} exact />
                     <Route path="/sign-up" name="auth" component={SignUp} exact />
                     <Route path="/email-confirmation-message" component={EmailConfirmationMessage} exact />
                     <Route path="/reset-password/:key" name="auth" component={ResetPassword} exact />

@@ -1,6 +1,6 @@
 
 from ORM.models import Student
-from ORM.serializers.student import StudentSerializers
+from ORM.serializers.student import StudentSerializers, StudentFilterSerializers
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,7 +8,8 @@ from rest_framework.views import APIView
 
 class StudentListView(APIView):
     def get(self, request):
-        queryset = Student.objects.all()
+        params = StudentFilterSerializers.check(request.GET)
+        queryset = Student.objects.list(group=params.get('group'))
         serializer = StudentSerializers(queryset, many=True)
         return Response(serializer.data)
 

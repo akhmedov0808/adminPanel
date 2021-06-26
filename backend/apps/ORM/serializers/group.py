@@ -7,7 +7,6 @@ class GroupSerializers(serializers.ModelSerializer):
     def to_representation(self, instance):
         data = super().to_representation(instance)
         data['department'] = DepartmentSerializers(instance.department).data
-
         return data
 
     class Meta:

@@ -4,7 +4,7 @@ import { useModal } from '../hooks/modal'
 import { useDeleteRequest } from '../hooks/request'
 import { STUDENT_DETAIL } from '../urls'
 import StudentUpdate from './StudentUpdate'
-import StundentModal from './StudentModal'
+import StudentModal from './StudentModal'
 
 export default function StudentItem({ item, reload, group }) {
     const remove = useDeleteRequest({ url: STUDENT_DETAIL.replace('{id}', item.id) })
@@ -24,7 +24,7 @@ export default function StudentItem({ item, reload, group }) {
     }
 
     const [showStudentModal] = useModal(
-        <StundentModal
+        <StudentModal
             item={item}
         />,
     )

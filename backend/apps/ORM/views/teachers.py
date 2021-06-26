@@ -3,12 +3,13 @@ from ORM.models import Teacher
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ORM.serializers.teachers import TeacherSerializers
+from ORM.serializers.teachers import TeacherSerializers, TeacherFilterSerializers
 
 
 class TeacherListView(APIView):
     def get(self, request):
-        queryset = Teacher.objects.all()
+        params = TeacherFilterSerializers.check(request.GET)
+        queryset = Teacher.objects.list(group=params.get('group'))
         serializer = TeacherSerializers(queryset, many=True)
         return Response(serializer.data)
 

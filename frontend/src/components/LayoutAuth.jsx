@@ -3,7 +3,7 @@ import React from 'react'
 import cn from 'classnames'
 
 
-export default function LayoutAuth({ children, sidebar }) {
+export default function tAuth({ children, sidebar }) {
     return (
         <div className="login-wrapper columns is-gapless">
             <div className="column is-7">

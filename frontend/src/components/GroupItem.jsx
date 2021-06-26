@@ -1,13 +1,16 @@
 import React from 'react'
 import Button from './common/Button'
 import { useModal } from '../hooks/modal'
-import { useDeleteRequest } from '../hooks/request'
-import { GROUP_DETAIL } from '../urls'
+import { useDeleteRequest, useLoad } from '../hooks/request'
+import { GROUP_DETAIL, STUDENT_LIST, TEACHER_LIST } from '../urls'
 import GroupUpdate from './GroupUpdate'
 import GroupModal from './GroupModal'
 
 export default function GroupItem({ item, reload, department }) {
     const remove = useDeleteRequest({ url: GROUP_DETAIL.replace('{id}', item.id) })
+    const student = useLoad({ url: STUDENT_LIST, params: { group: item.id } })
+    const teachers = useLoad({ url: TEACHER_LIST, params: { group: item.id } })
+
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <GroupUpdate
             department={department}
@@ -26,6 +29,8 @@ export default function GroupItem({ item, reload, department }) {
     const [showGroupModal] = useModal(
         <GroupModal
             item={item}
+            student={student}
+            teachers={teachers}
         />,
     )
 
