@@ -1,7 +1,7 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
-export default function Layout({ children }) {
+export default function Layout({children}) {
     return (
         <div>
             <nav className="navbar is-info is-size-4">
@@ -29,3 +29,5 @@ export default function Layout({ children }) {
         </div>
     )
 }
+
+
