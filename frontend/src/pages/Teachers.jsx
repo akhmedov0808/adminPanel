@@ -1,17 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Table from '../components/common/Table'
-import { GROUP_LIST, TEACHER_LIST } from '../urls'
-import { useLoad } from '../hooks/request'
+import {GROUP_LIST, TEACHER_LIST} from '../urls'
+import {useLoad} from '../hooks/request'
 import Layout from '../components/common/Layout'
-import { useModal } from '../hooks/modal'
+import {useModal} from '../hooks/modal'
 import Button from '../components/common/Button'
 import TeacherCreate from '../components/TeacherCreate'
 import TeacherItem from '../components/TeacherItem'
+import Search from "../components/Search";
 
 
 export default function Teacher() {
-    const teacherList = useLoad({ url: TEACHER_LIST })
-    const groupList = useLoad({ url: GROUP_LIST })
+    const [search, setSearch] = useState("")
+    const teacherList = useLoad({url: TEACHER_LIST, params: {search}}, [search])
+    const groupList = useLoad({url: GROUP_LIST})
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <TeacherCreate
             group={groupList}
@@ -23,7 +25,10 @@ export default function Teacher() {
     return (
         <Layout>
             <div className="is-flex margin">
-                <div><h1 className="is-size-4">Select Teacher to change</h1></div>
+                <div>
+                    <h1 className="is-size-4">Select Teacher to change</h1>
+                    <Search setSearch={setSearch}/>
+                </div>
                 <div>
                     <Button
                         onClick={showUpdateModal}
@@ -33,11 +38,12 @@ export default function Teacher() {
                     />
                 </div>
             </div>
-            <hr />
+            <hr/>
             <div>
                 {teacherList.response && (teacherList.response.length > 0) ? (
                     <b className="is-size-5 ml-4">
-                        Teachers :  {teacherList.response.length}
+                        <input type="checkbox" className='mr-3'/>
+                        Teachers : {teacherList.response.length}
                     </b>
                 ) : null}
             </div>
@@ -45,13 +51,13 @@ export default function Teacher() {
                 loading={teacherList.loading}
                 items={teacherList.response ? teacherList.response : []}
                 columns={
-                    { name: '', actions: '' }
+                    {name: '', actions: ''}
                 }
                 renderItem={(item) => (
                     <TeacherItem key={item.id}
-                        item={item}
-                        group={groupList}
-                        reload={teacherList}
+                                 item={item}
+                                 group={groupList}
+                                 reload={teacherList}
                     />
                 )}
             />

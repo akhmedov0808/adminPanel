@@ -1,4 +1,3 @@
-
 from ORM.models import Student
 from ORM.serializers.student import StudentSerializers, StudentFilterSerializers
 from rest_framework.generics import get_object_or_404
@@ -9,7 +8,7 @@ from rest_framework.views import APIView
 class StudentListView(APIView):
     def get(self, request):
         params = StudentFilterSerializers.check(request.GET)
-        queryset = Student.objects.list(group=params.get('group'))
+        queryset = Student.objects.list(group=params.get('group'), search=params.get('search'))
         serializer = StudentSerializers(queryset, many=True)
         return Response(serializer.data)
 
@@ -38,3 +37,9 @@ class StudentDetailView(APIView):
         serializer.save()
         return Response(serializer.data)
 
+
+class StudentDeleteListView(APIView):
+    def put(self, request):
+        instance = Student.objects.filter(id__in=request.data.get('id'))
+        instance.delete()
+        return Response({}, 204)

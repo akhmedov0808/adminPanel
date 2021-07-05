@@ -3,12 +3,13 @@ from ORM.models import Department
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ORM.serializers.department import DepartmentSerializers
+from ORM.serializers.department import DepartmentSerializers, DepartmentFilterSerializers
 
 
 class DepartmentListView(APIView):
     def get(self, request):
-        queryset = Department.objects.all()
+        params = DepartmentFilterSerializers.check(request.GET)
+        queryset = Department.objects.list(search=params.get('search'))
         serializer = DepartmentSerializers(queryset, many=True)
         return Response(serializer.data)
 
@@ -37,3 +38,9 @@ class DepartmentDetailView(APIView):
         serializer.save()
         return Response(serializer.data)
 
+
+class DepartmentDeleteListView(APIView):
+    def put(self, request):
+        instance = Department.objects.filter(id__in=request.data.get('id'))
+        instance.delete()
+        return Response({}, 204)

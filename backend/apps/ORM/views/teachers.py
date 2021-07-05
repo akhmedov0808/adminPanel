@@ -9,7 +9,7 @@ from ORM.serializers.teachers import TeacherSerializers, TeacherFilterSerializer
 class TeacherListView(APIView):
     def get(self, request):
         params = TeacherFilterSerializers.check(request.GET)
-        queryset = Teacher.objects.list(group=params.get('group'))
+        queryset = Teacher.objects.list(group=params.get('group'), search=params.get('search'))
         serializer = TeacherSerializers(queryset, many=True)
         return Response(serializer.data)
 

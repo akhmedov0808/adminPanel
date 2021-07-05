@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from ORM.models import Department
 from ORM.serializers.faculty import FacultySerializers
+from core.utils.serializers import ValidatorSerializer
 
 
 class DepartmentSerializers(serializers.ModelSerializer):
@@ -13,3 +14,6 @@ class DepartmentSerializers(serializers.ModelSerializer):
         model = Department
         fields = ('id', 'name', 'faculty')
 
+
+class DepartmentFilterSerializers(ValidatorSerializer):
+    search = serializers.CharField(required=False)

@@ -17,3 +17,4 @@ class StudentSerializers(serializers.ModelSerializer):
 
 class StudentFilterSerializers(ValidatorSerializer):
     group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all(), required=False)
+    search = serializers.CharField(required=False)

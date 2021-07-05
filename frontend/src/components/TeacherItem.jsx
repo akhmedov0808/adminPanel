@@ -31,8 +31,9 @@ export default function TeacherItem({ item, reload, group }) {
 
     return (
         <tr>
-            <td onClick={() => showTeacherModal()} key={item.id} className="is-size-5">
-                {item.name}
+            <td  key={item.id} className="is-size-5">
+                <input type="checkbox" className='mr-3'/>
+                <label onClick={() => showTeacherModal()}>{item.name}</label>
             </td>
 
             <td className="has-text-right">

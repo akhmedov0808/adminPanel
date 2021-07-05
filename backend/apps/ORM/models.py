@@ -1,7 +1,9 @@
 from django.db import models
 from django.db.models import CASCADE
 
+from ORM.querysets.department import DepartmentQuerySet
 from ORM.querysets.faculty import FacultyQuerySet
+from ORM.querysets.group import GroupQuerySet
 from ORM.querysets.teachers import TeacherQuerySet
 from ORM.querysets.student import StudentQuerySet
 from core.models import BaseModel
@@ -21,6 +23,7 @@ class Faculty(BaseModel):
 
 class Department(BaseModel):
     faculty = models.ForeignKey(Faculty, CASCADE, blank=True, null=True)
+    objects = DepartmentQuerySet.as_manager()
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -33,6 +36,7 @@ class Department(BaseModel):
 
 class Group(BaseModel):
     name = models.CharField(max_length=255)
+    objects = GroupQuerySet.as_manager()
     department = models.ForeignKey(Department, CASCADE, blank=True, null=True)
 
     def __str__(self):

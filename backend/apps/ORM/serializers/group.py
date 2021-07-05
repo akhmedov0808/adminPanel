@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from ORM.models import Group
 from ORM.serializers.department import DepartmentSerializers
+from core.utils.serializers import ValidatorSerializer
 
 
 class GroupSerializers(serializers.ModelSerializer):
@@ -12,3 +13,7 @@ class GroupSerializers(serializers.ModelSerializer):
     class Meta:
         model = Group
         fields = ('id', 'name', 'department')
+
+
+class GroupFilterSerializers(ValidatorSerializer):
+    search = serializers.CharField(required=False)

@@ -1,13 +1,13 @@
 import React from 'react'
 import Button from './common/Button'
-import { useModal } from '../hooks/modal'
-import { useDeleteRequest } from '../hooks/request'
-import { STUDENT_DETAIL } from '../urls'
+import {useModal} from '../hooks/modal'
+import {useDeleteRequest} from '../hooks/request'
+import {STUDENT_DETAIL} from '../urls'
 import StudentUpdate from './StudentUpdate'
 import StudentModal from './StudentModal'
 
-export default function StudentItem({ item, reload, group }) {
-    const remove = useDeleteRequest({ url: STUDENT_DETAIL.replace('{id}', item.id) })
+export default function StudentItem({item, reload, group, setId, id}) {
+    const remove = useDeleteRequest({url: STUDENT_DETAIL.replace('{id}', item.id)})
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <StudentUpdate
             group={group}
@@ -16,6 +16,7 @@ export default function StudentItem({ item, reload, group }) {
             hideModal={() => setShowUpdateModal()}
         />,
     )
+
     async function onDelete() {
         if (global.confirm('Вы действительно хотите удалить?')) {
             await remove.request()
@@ -31,8 +32,15 @@ export default function StudentItem({ item, reload, group }) {
 
     return (
         <tr>
-            <td onClick={showStudentModal} key={item.id} className="is-size-5">
-                {item.name}
+            <td key={item.id} className="is-size-5">
+                <input onClick={(e) => {
+                    if (e.target.checked) {
+                        setId([...id, item.id])
+                        return
+                    }
+                    setId(id.filter((i) => item.id !== i))
+                }} type="checkbox" id="cbox3" className='mr-3'/>
+                <label onClick={showStudentModal}>{item.name}</label>
             </td>
 
             <td className="has-text-right">

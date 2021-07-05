@@ -1,6 +1,6 @@
 
 from ORM.models import Group
-from ORM.serializers.group import GroupSerializers
+from ORM.serializers.group import GroupSerializers, GroupFilterSerializers
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -8,7 +8,8 @@ from rest_framework.views import APIView
 
 class GroupListView(APIView):
     def get(self, request):
-        queryset = Group.objects.all()
+        params = GroupFilterSerializers.check(request.GET)
+        queryset = Group.objects.list(search=params.get('search'))
         serializer = GroupSerializers(queryset, many=True)
         return Response(serializer.data)
 
@@ -37,3 +38,9 @@ class GroupDetailView(APIView):
         serializer.save()
         return Response(serializer.data)
 
+
+class GroupDeleteListView(APIView):
+    def put(self, request):
+        instance = Group.objects.filter(id__in=request.data.get('id'))
+        instance.delete()
+        return Response({}, 204)

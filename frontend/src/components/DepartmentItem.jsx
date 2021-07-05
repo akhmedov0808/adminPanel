@@ -1,13 +1,13 @@
 import React from 'react'
 import Button from './common/Button'
-import { useModal } from '../hooks/modal'
+import {useModal} from '../hooks/modal'
 import DepartmentUpdate from './DepartmentUpdate'
-import { useDeleteRequest } from '../hooks/request'
-import { DEPARTMENT_DETAIL } from '../urls'
+import {useDeleteRequest} from '../hooks/request'
+import {DEPARTMENT_DETAIL} from '../urls'
 import DepartmentModal from './DepartmentModal'
 
-export default function DepartmentItem({ item, reload }) {
-    const remove = useDeleteRequest({ url: DEPARTMENT_DETAIL.replace('{id}', item.id) })
+export default function DepartmentItem({item, reload, setId, id}) {
+    const remove = useDeleteRequest({url: DEPARTMENT_DETAIL.replace('{id}', item.id)})
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <DepartmentUpdate
             reload={reload}
@@ -31,8 +31,15 @@ export default function DepartmentItem({ item, reload }) {
 
     return (
         <tr>
-            <td onClick={showDepartmentModal} key={item.id} className="is-size-5">
-                {item.name}
+            <td key={item.id} className="is-size-5">
+                <input onClick={(e) => {
+                    if (e.target.checked) {
+                        setId([...id, item.id])
+                        return
+                    }
+                    setId(id.filter((i) => item.id !== i))
+                }} type="checkbox" id="cbox3" className='mr-3'/>
+                <label onClick={showDepartmentModal}>{item.name}</label>
             </td>
 
             <td className="has-text-right">
