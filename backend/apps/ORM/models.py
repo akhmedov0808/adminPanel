@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import CASCADE
 
+from ORM.querysets.faculty import FacultyQuerySet
 from ORM.querysets.teachers import TeacherQuerySet
 from ORM.querysets.student import StudentQuerySet
 from core.models import BaseModel
@@ -8,6 +9,7 @@ from core.models import BaseModel
 
 class Faculty(BaseModel):
     name = models.CharField(max_length=255)
+    objects = FacultyQuerySet.as_manager()
 
     def __str__(self):
         return self.name

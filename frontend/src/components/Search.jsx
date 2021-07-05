@@ -1,17 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 
-export default function Search({facultyList}) {
-    const [search, setSearch] = useState("")
-    let hello = []
-
-    facultyList.map((item)=> {
-        hello.push(item.name)
-    })
-
-    const filterProducts = hello.filter((item) => {
-        return item.toLocaleLowerCase().includes(search)
-    })
-
+export default function Search({setSearch}) {
     return (
         <div>
             <div className='mt-3'>
@@ -21,11 +10,6 @@ export default function Search({facultyList}) {
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder='Search . . .'/>
             </div>
-            <ul className="mt-3 mx-3">
-                {filterProducts.map((item) => {
-                    return <li key={item}>{item}</li>
-                })}
-            </ul>
         </div>
     )
 }

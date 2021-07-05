@@ -12,7 +12,8 @@ import Search from "../components/Search";
 
 
 export default function Faculty() {
-    const facultyList = useLoad({url: FACULTY_LIST})
+    const [search, setSearch] = useState("")
+    const facultyList = useLoad({url: FACULTY_LIST, params: {search}}, [search])
     const studentList = useLoad({url: STUDENT_LIST})
     const [id, setId] = useState([])
     const remove = usePutRequest({url: FACULTY_UPDATE})
@@ -39,10 +40,7 @@ export default function Faculty() {
                 <div>
                     <div className="is-size-4"><h1 className="is-size-4">Select Faculty to change</h1></div>
 
-                    <Search
-                        facultyList={facultyList.response || []}
-                    />
-
+                    <Search setSearch={setSearch} />
                 </div>
                 <div>
                     <Button

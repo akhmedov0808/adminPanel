@@ -2,12 +2,13 @@ from ORM.models import Faculty
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ORM.serializers.faculty import FacultySerializers
+from ORM.serializers.faculty import FacultySerializers, FacultyFilterSerializers
 
 
 class FacultyListView(APIView):
     def get(self, request):
-        queryset = Faculty.objects.all()
+        params = FacultyFilterSerializers.check(request.GET)
+        queryset = Faculty.objects.list(search=params.get('search'))
         serializer = FacultySerializers(queryset, many=True)
         return Response(serializer.data)
 

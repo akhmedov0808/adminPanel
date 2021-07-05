@@ -7,7 +7,7 @@ import FacultyUpdate from './FacultyUpdate'
 import FacultyModal from './FacultyModal'
 
 
-export default function FacultyItem({item, items, reload, setId, id}) {
+export default function FacultyItem({item, reload, setId, id}) {
     const remove = useDeleteRequest({url: FACULTY_DETAIL.replace('{id}', item.id)})
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <FacultyUpdate
@@ -55,5 +55,6 @@ export default function FacultyItem({item, items, reload, setId, id}) {
                     icon="trash"/>
             </td>
         </tr>
+
     )
 }
