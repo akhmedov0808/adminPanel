@@ -21,7 +21,7 @@ export default function Modal({ isActive, children, onClose }) {
         <div className={cn('modal', { 'is-active': isActive })}>
             <div className="modal-background" onClick={onClose} />
 
-            <div className="modal-card">
+            <div className="modal-card box">
                 <div className="modal-card-body">
                     {children}
                 </div>

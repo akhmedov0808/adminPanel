@@ -20,6 +20,7 @@ export default function StudentCreate({ onCancel, reload, group }) {
 
     return (
         <div>
+            <h1 className="title has-text-centered"><b>Add Student</b></h1>
             <StudentForm
                 onSubmit={onSubmit}
                 onCancel={onCancel}

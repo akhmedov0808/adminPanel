@@ -1,4 +1,3 @@
-
 from ORM.models import Faculty
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
@@ -37,3 +36,9 @@ class FacultyDetailView(APIView):
         serializer.save()
         return Response(serializer.data)
 
+
+class FacultyDeleteListView(APIView):
+    def put(self, request):
+        instance = Faculty.objects.filter(id__in=request.data.get('id'))
+        instance.delete()
+        return Response({}, 204)

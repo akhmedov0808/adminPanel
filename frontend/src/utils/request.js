@@ -16,9 +16,10 @@ const baseAxios = axios.create({
 })
 
 baseAxios.interceptors.request.use((config) => ({
-    ...config,
-    params: humps.decamelizeKeys(config.params),
-}))
+        ...config,
+        params: humps.decamelizeKeys(config.params),
+    })
+)
 
 export default baseAxios
 

@@ -20,6 +20,7 @@ export default function GroupCreate({ onCancel, reload, department }) {
 
     return (
         <div>
+            <h1 className="title has-text-centered"><b>Add Group</b></h1>
             <GroupForm
                 onSubmit={onSubmit}
                 onCancel={onCancel}

@@ -17,6 +17,7 @@ export default function DepartmentCreate({ onCancel, reload, faculty }) {
 
     return (
         <div>
+            <h1 className="title has-text-centered"><b>Add Department</b></h1>
             <DepartmentForm
                 onSubmit={onSubmit}
                 onCancel={onCancel}

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -65,10 +71,16 @@ ion-icon {
     background: #37b54c !important;
 }
 
-body{
+body {
     font-family: 'Inconsolata', monospace;
 }
-.margin{
+
+.margin {
     display: flex;
     justify-content: space-between;
+}
+
+#cbox3:checked + label {
+    color: red;
+    text-decoration: line-through;
 }

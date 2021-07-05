@@ -14,6 +14,6 @@ export const TEACHER_LIST = 'orm/teacher'
 export const TEACHER_DETAIL = 'orm/teacher/{id}'
 export const FACULTY_LIST = 'orm/faculty'
 export const FACULTY_DETAIL = 'orm/faculty/{id}'
-
+export const FACULTY_UPDATE = 'orm/faculty_delete'
 
 export const domain = 'http://localhost:8000'

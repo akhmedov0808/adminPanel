@@ -22,6 +22,7 @@ export default function TeacherCreate({ onCancel, reload, group }) {
 
     return (
         <div>
+            <h1 className="title has-text-centered"><b>Add Teacher</b></h1>
             <TeacherForm
                 onSubmit={onSubmit}
                 onCancel={onCancel}

@@ -11,7 +11,7 @@ import { email, required, validator } from '../utils/validators'
 import Password from '../components/common/Password'
 import { isAuthenticated, signin } from '../utils/auth'
 import LayoutAuth from '../components/LayoutAuth'
-import logo from '../static/logo.svg'
+// import logo from '../static/logo.svg'
 
 
 export default function Login() {
@@ -19,7 +19,7 @@ export default function Login() {
     const signIn = usePostRequest({ url: SIGNIN, headers: {} })
 
     if (isAuthenticated()) {
-        return <Redirect to="/" />
+        return <Redirect to="/faculty" />
     }
 
     async function onSubmit(data) {
@@ -46,7 +46,7 @@ export default function Login() {
         )}>
 
             <div className="has-text-centered">
-                <img src={logo} className={css(styles.img)} alt="Logo" />
+                {/*<img src={logo} className={css(styles.img)} alt="Logo" />*/}
                 <h2 className="is-size-4 has-text-weight-bold">Войдите в систему</h2>
                 <br />
             </div>
