@@ -9,6 +9,7 @@ import StudentCreate from '../components/StudentCreate'
 import StudentItem from '../components/StudentItem'
 import StudentDelete from "../components/StudentDelete";
 import Search from "../components/Search";
+import ReactExcel from "../components/ReactExcel";
 
 
 export default function Student() {
@@ -17,7 +18,6 @@ export default function Student() {
     const groupList = useLoad({url: GROUP_LIST})
     const [id, setId] = useState([])
     const remove = usePutRequest({url: STUDENT_UPDATE})
-
 
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <StudentCreate
@@ -88,3 +88,39 @@ export default function Student() {
         </Layout>
     )
 }
+
+// import React from "react";
+// import ReactHTMLTableToExcel from "react-html-table-to-excel"
+//
+// export default function Student() {
+//     return (
+//         <section>
+//             <div>
+//                 <table
+//                     className='table'
+//                     id='emp-table'>
+//                     <thead>
+//                     <tr>
+//                         <th>Ism</th>
+//                         <th>Familiya</th>
+//                         <th>Otchestva</th>
+//                     </tr>
+//                     </thead>
+//                     <tbody>
+//                     <tr>
+//                         <td>Azizjon</td>
+//                         <td>Axmedov</td>
+//                         <td>Baxodirovich</td>
+//                     </tr>
+//                     </tbody>
+//                 </table>
+//                 <ReactHTMLTableToExcel
+//                     className='button is-info'
+//                     table='emp-table'
+//                     filename='Emp Excel file'
+//                     sheet='Sheet'
+//                     buttonText='Export to Excel'/>
+//             </div>
+//         </section>
+//     )
+// }

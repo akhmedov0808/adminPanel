@@ -5,6 +5,7 @@ import {useDeleteRequest} from '../hooks/request'
 import {STUDENT_DETAIL} from '../urls'
 import StudentUpdate from './StudentUpdate'
 import StudentModal from './StudentModal'
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 export default function StudentItem({item, reload, group, setId, id}) {
     const remove = useDeleteRequest({url: STUDENT_DETAIL.replace('{id}', item.id)})
@@ -40,8 +41,9 @@ export default function StudentItem({item, reload, group, setId, id}) {
                     }
                     setId(id.filter((i) => item.id !== i))
                 }} type="checkbox" id="cbox3" className='mr-3'/>
-                <label onClick={showStudentModal}>{item.name}</label>
+                <label onClick={showStudentModal}>{item.name} {item.lastName}</label>&nbsp;&nbsp;
             </td>
+
 
             <td className="has-text-right">
                 <Button
@@ -57,8 +59,6 @@ export default function StudentItem({item, reload, group, setId, id}) {
                     icon="trash"
                 />
             </td>
-
         </tr>
-
     )
 }

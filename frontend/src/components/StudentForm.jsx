@@ -9,7 +9,11 @@ export default function StudentForm({ onSubmit, onCancel, group, initialValues =
     return (
         <Formik onSubmit={onSubmit} initialValues={{ name: '', ...initialValues }}>
             <Form>
-                <Input name="name" label="Name" validate={required} />
+                <Input name="name" label="First name" validate={required} />
+                <Input name="lastName" label="Last name" validate={required} />
+                <Input name="patronymic" label="Patronymic" validate={required} />
+                <Input type='number' name="age" label="Age" validate={required} />
+
                 <Select
                     name="group"
                     label="Groups"

@@ -38,3 +38,9 @@ class TeacherDetailView(APIView):
         serializer.save()
         return Response(serializer.data)
 
+
+class TeacherDeleteListView(APIView):
+    def put(self, request):
+        instance = Teacher.objects.filter(id__in=request.data.get('id'))
+        instance.delete()
+        return Response({}, 204)

@@ -22,8 +22,8 @@ export default function Navbar() {
             "width": activeWidthNewAnimWidth + "px"
         });
         $("#navbarSupportedContent").on("click", "li", function (e) {
-            $('#navbarSupportedContent ul li').removeClass("active");
-            $(this).addClass('active');
+            $('#navbarSupportedContent ul li').removeClass("is-active");
+            $(this).addClass('is-active');
             let activeWidthNewAnimHeight = $(this).innerHeight();
             let activeWidthNewAnimWidth = $(this).innerWidth();
             let itemPosNewAnimTop = $(this).position();
@@ -73,29 +73,29 @@ export default function Navbar() {
                         <div className="right"></div>
                     </div>
 
-                    <li className="nav-item active">
+                    <li className="nav-item is-active">
                         <NavLink to="/faculty" exact>
                             <span className='is-size-5'>Faculties</span>
                         </NavLink>
                     </li>
 
-                    <li className="nav-item">
+                    <li className="nav-item is-active">
                         <NavLink to="/department" exact>
                             <span className='is-size-5'>Departments</span>
                         </NavLink>
                     </li>
 
-                    <li>
+                    <li className='is-active'>
                         <NavLink to="/group" exact>
                             <span className='is-size-5'>Groups</span>
                         </NavLink>
                     </li>
-                    <li>
+                    <li className='is-active'>
                         <NavLink to="/student" exact>
                             <span className='is-size-5'>Students</span>
                         </NavLink>
                     </li>
-                    <li>
+                    <li className='is-active'>
                         <NavLink to="/teacher" exact>
                             <span className='is-size-5'>Teachers</span>
                         </NavLink>

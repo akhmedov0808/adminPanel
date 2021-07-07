@@ -18,6 +18,7 @@ export const DEPARTMENT_UPDATE = 'orm/department_delete'
 
 export const TEACHER_LIST = 'orm/teacher'
 export const TEACHER_DETAIL = 'orm/teacher/{id}'
+export const TEACHER_UPDATE = 'orm/teacher_delete'
 
 export const FACULTY_LIST = 'orm/faculty'
 export const FACULTY_DETAIL = 'orm/faculty/{id}'

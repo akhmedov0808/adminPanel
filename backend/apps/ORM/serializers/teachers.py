@@ -12,7 +12,7 @@ class TeacherSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Teacher
-        fields = ('id', 'name', 'group')
+        fields = ('id', 'name', 'last_name', 'patronymic', 'science', 'age', 'group')
 
 
 class TeacherFilterSerializers(ValidatorSerializer):

@@ -12,7 +12,7 @@ class StudentSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Student
-        fields = ('id', 'name', 'group')
+        fields = ('id', 'name', 'last_name', 'patronymic', 'age', 'group')
 
 
 class StudentFilterSerializers(ValidatorSerializer):

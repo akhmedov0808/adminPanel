@@ -31,7 +31,7 @@ export default function GroupItem({item, reload, department, setId, id}) {
         <GroupModal
             item={item}
             student={student}
-            teachers={teachers}
+            teachers={teachers.response || []}
         />,
     )
 

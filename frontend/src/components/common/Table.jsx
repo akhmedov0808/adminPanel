@@ -1,7 +1,7 @@
 import { css, StyleSheet } from 'aphrodite'
 import cn from 'classnames'
 import queryString from 'query-string'
-import isEmpty from 'lodash/isEmpty'
+import { isEmpty } from 'lodash';
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParams } from '../../hooks/queryString'

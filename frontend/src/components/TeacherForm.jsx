@@ -15,7 +15,12 @@ export default function TeacherForm({ onSubmit, onCancel, group, initialValues =
                 initialValues.group.map((item) => ({ value: item.id, label: item.name }))
             ) : [] }}>
             <Form>
-                <Input name="name" label="Name" validate={required} />
+                <Input name="name" label="First name" validate={required} />
+                <Input name="lastName" label="Last name" validate={required} />
+                <Input name="patronymic" label="Patronymic" validate={required} />
+                <Input name="science" label="Science" validate={required} />
+                <Input type='number' name="age" label="Age" validate={required} />
+
                 <MultiSelect
                     name="group"
                     label="Groups"

@@ -3,7 +3,7 @@ from ORM.views.deaprtment import DepartmentListView, DepartmentDetailView, Depar
 from ORM.views.faculty import FacultyListView, FacultyDetailView, FacultyDeleteListView
 from ORM.views.group import GroupListView, GroupDetailView, GroupDeleteListView
 from ORM.views.student import StudentListView, StudentDetailView, StudentDeleteListView
-from ORM.views.teachers import TeacherListView, TeacherDetailView
+from ORM.views.teachers import TeacherListView, TeacherDetailView, TeacherDeleteListView
 
 urlpatterns = [
     path('student', StudentListView.as_view(), name='student-list'),
@@ -24,5 +24,5 @@ urlpatterns = [
 
     path('teacher', TeacherListView.as_view(), name='teacher-list'),
     path('teacher/<int:pk>', TeacherDetailView.as_view(), name='teacher-detail'),
-
+    path('teacher_delete', TeacherDeleteListView.as_view(), name='teacher-delete'),
 ]

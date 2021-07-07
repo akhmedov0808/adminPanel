@@ -49,6 +49,9 @@ class Group(BaseModel):
 
 class Student(BaseModel):
     name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    patronymic = models.CharField(max_length=255)
+    age = models.IntegerField()
     group = models.ForeignKey(Group, CASCADE, blank=True, null=True)
     objects = StudentQuerySet.as_manager()
 
@@ -63,6 +66,10 @@ class Student(BaseModel):
 class Teacher(BaseModel):
     group = models.ManyToManyField(Group, blank=True)
     name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    patronymic = models.CharField(max_length=255)
+    science = models.CharField(max_length=100)
+    age = models.IntegerField()
     objects = TeacherQuerySet.as_manager()
 
     def __str__(self):
