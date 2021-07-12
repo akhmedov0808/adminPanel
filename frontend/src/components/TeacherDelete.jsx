@@ -38,9 +38,10 @@ export default function TeacherDelete({onCancel, remove, reload, id, teacherList
                     <div className='is-flex'>
                         <span
                             className='is-size-5 is-flex'>
-                            &nbsp;&nbsp;&nbsp; 📍 Student:
+                            &nbsp;&nbsp;&nbsp; 📍 Teacher:
                         </span>
                         <span className='ml-3 is-size-5 has-text-info'>{item.name}</span>
+                        <span className='ml-3 is-size-5 has-text-info'>{item.lastName}</span>
                     </div>
                     <hr/>
                 </div>

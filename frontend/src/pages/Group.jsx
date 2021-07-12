@@ -57,7 +57,7 @@ export default function Group() {
             </div>
             <hr/>
             <div className='is-flex is-justify-content-space-between'>
-                {groupList.response ? (
+                {groupList.response && (groupList.response.length > 0) ? (
                     <b className="is-size-5 ml-4">
                         <input type="checkbox" className='mr-3'/>
                         Groups : {groupList.response.length}
@@ -79,13 +79,14 @@ export default function Group() {
                 columns={
                     {name: '', actions: ''}
                 }
-                renderItem={(item) => (<GroupItem
-                    key={item.id}
-                    item={item}
-                    department={departmentList}
-                    reload={groupList}
-                    setId={setId}
-                    id={id}/>)}/>
+                renderItem={(item) => (
+                    <GroupItem
+                        key={item.id}
+                        item={item}
+                        department={departmentList}
+                        reload={groupList}
+                        setId={setId}
+                        id={id}/>)}/>
         </Layout>
     )
 }

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import Table from '../components/common/Table'
 import FacultyItem from '../components/FacultyItem'
-import {FACULTY_LIST, FACULTY_UPDATE, STUDENT_LIST} from '../urls'
+import {domain, FACULTY_LIST, FACULTY_UPDATE, STUDENT_LIST, TEACHER_LIST} from '../urls'
 import {useLoad, usePutRequest} from '../hooks/request'
 import Layout from '../components/common/Layout'
 import {useModal} from '../hooks/modal'
@@ -9,6 +8,7 @@ import Button from '../components/common/Button'
 import FacultyCreate from '../components/FacultyCreate'
 import FacultyDelete from "../components/FacultyDelete";
 import Search from "../components/Search";
+import Table from "../components/common/Table";
 
 
 export default function Faculty() {
@@ -17,6 +17,7 @@ export default function Faculty() {
     const studentList = useLoad({url: STUDENT_LIST})
     const [id, setId] = useState([])
     const remove = usePutRequest({url: FACULTY_UPDATE})
+    const student = studentList.response ? studentList.response : []
 
     const [showUpdateModal, setShowUpdateModal] = useModal(
         <FacultyCreate
@@ -33,14 +34,24 @@ export default function Faculty() {
             id={id}/>
     )
 
+    async function download() {
+        if (!student[0] || !student[0].xls) {
+            return
+        }
+
+        const a = document.createElement('a')
+        a.href = [`${domain}/${student[0].xls}`]
+        a.setAttribute('download', 'response')
+        a.click()
+    }
+
     return (
         <Layout>
             <div className="is-flex margin">
-
                 <div>
                     <div className="is-size-4"><h1 className="is-size-4">Select Faculty to change</h1></div>
 
-                    <Search setSearch={setSearch} />
+                    <Search setSearch={setSearch}/>
                 </div>
                 <div>
                     <Button
@@ -54,7 +65,7 @@ export default function Faculty() {
             <hr/>
 
             <div className='is-flex is-justify-content-space-between'>
-                {facultyList.response ? (
+                {facultyList.response && (facultyList.response.length > 0) ? (
                     <b className="is-size-5 ml-4">
                         <input type="checkbox" className='mr-3'/>
                         Faculties : {facultyList.response.length}
@@ -68,7 +79,15 @@ export default function Faculty() {
                             text="Delete selected Faculties"
                             icon="trash"/>
                     </div>
-                ) : null}
+                ) : facultyList.response ?
+                    <Button
+                        className='is-info '
+                        icon="cloud-download-outline"
+                        text="Export to Excel"
+                        onClick={download}
+                        loading={facultyList.loading}/>
+                    : null}
+
 
             </div>
 

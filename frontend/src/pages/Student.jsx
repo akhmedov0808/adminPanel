@@ -9,7 +9,6 @@ import StudentCreate from '../components/StudentCreate'
 import StudentItem from '../components/StudentItem'
 import StudentDelete from "../components/StudentDelete";
 import Search from "../components/Search";
-import ReactExcel from "../components/ReactExcel";
 
 
 export default function Student() {
@@ -56,7 +55,7 @@ export default function Student() {
             </div>
             <hr/>
             <div className='is-flex is-justify-content-space-between'>
-                {studentList.response ? (
+                {studentList.response && (studentList.response.length > 0) ? (
                     <b className="is-size-5 ml-4">
                         <input type="checkbox" className='mr-3'/>
                         Students : {studentList.response.length}
@@ -78,49 +77,14 @@ export default function Student() {
                 columns={
                     {name: '', actions: ''}
                 }
-                renderItem={(item) => (<StudentItem
-                    key={item.id}
-                    item={item}
-                    group={groupList}
-                    reload={studentList}
-                    setId={setId}
-                    id={id}/>)}/>
+                renderItem={(item) => (
+                    <StudentItem
+                        key={item.id}
+                        item={item}
+                        group={groupList}
+                        reload={studentList}
+                        setId={setId}
+                        id={id}/>)}/>
         </Layout>
     )
 }
-
-// import React from "react";
-// import ReactHTMLTableToExcel from "react-html-table-to-excel"
-//
-// export default function Student() {
-//     return (
-//         <section>
-//             <div>
-//                 <table
-//                     className='table'
-//                     id='emp-table'>
-//                     <thead>
-//                     <tr>
-//                         <th>Ism</th>
-//                         <th>Familiya</th>
-//                         <th>Otchestva</th>
-//                     </tr>
-//                     </thead>
-//                     <tbody>
-//                     <tr>
-//                         <td>Azizjon</td>
-//                         <td>Axmedov</td>
-//                         <td>Baxodirovich</td>
-//                     </tr>
-//                     </tbody>
-//                 </table>
-//                 <ReactHTMLTableToExcel
-//                     className='button is-info'
-//                     table='emp-table'
-//                     filename='Emp Excel file'
-//                     sheet='Sheet'
-//                     buttonText='Export to Excel'/>
-//             </div>
-//         </section>
-//     )
-// }
