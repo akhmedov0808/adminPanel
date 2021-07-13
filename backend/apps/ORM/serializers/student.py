@@ -211,3 +211,27 @@ class StudentSerializers(serializers.ModelSerializer):
 class StudentFilterSerializers(ValidatorSerializer):
     group = serializers.PrimaryKeyRelatedField(queryset=Group.objects.all(), required=False)
     search = serializers.CharField(required=False)
+
+
+
+# import xlsxwriter
+#
+# rows = [["a", "b"], ['1', '2']]
+# cols = [['a', '1'], ['a', '2']]
+# workbook = xlsxwriter.Workbook('tables.xlsx')
+# worksheet = workbook.add_worksheet()
+#
+# for i, row in enumerate(rows):
+#     for j, col in enumerate(cols):
+#         for el in row:
+#             if el in col:
+#                 worksheet.write(i, j, el)
+#
+# center_format = workbook.add_format({
+#     'align': 'center',
+#     'valign': 'vcenter'})
+# for i, value in enumerate(rows[0]):
+#     worksheet.merge_range(0, i, 0, i + 1, value, center_format)
+#
+# workbook.close()
+

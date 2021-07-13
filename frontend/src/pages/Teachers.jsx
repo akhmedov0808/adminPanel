@@ -57,7 +57,6 @@ export default function Teacher() {
             <div className='is-flex is-justify-content-space-between'>
                 {teacherList.response && (teacherList.response.length > 0) ? (
                     <b className="is-size-5 ml-4">
-                        <input type="checkbox" className='mr-3'/>
                         Teachers : {teacherList.response.length}
                     </b>
                 ) : null}

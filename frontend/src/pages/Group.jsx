@@ -59,7 +59,6 @@ export default function Group() {
             <div className='is-flex is-justify-content-space-between'>
                 {groupList.response && (groupList.response.length > 0) ? (
                     <b className="is-size-5 ml-4">
-                        <input type="checkbox" className='mr-3'/>
                         Groups : {groupList.response.length}
                     </b>
                 ) : null}
